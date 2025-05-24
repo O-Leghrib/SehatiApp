@@ -36,7 +36,7 @@ class homepage(tk.Frame):
         # أزرار أسفل الشاشة
         self.bottom_btn1 = tk.Button(self, text="Reminders History", command=lambda:controller.show_frame("ReminderHistoryApp"),
                                      bg="deepskyblue", fg="white", font=("Arial", 14, "bold"), width=20, height=2)
-        self.bottom_btn2 = tk.Button(self, text="Historique", command=lambda:controller.show_frame("HistoryPage"),
+        self.bottom_btn2 = tk.Button(self, text="Measurements Evolution", command=lambda:controller.show_frame("HistoryPage"),
                                      bg="deepskyblue", fg="white", font=("Arial", 14, "bold"), width=20, height=2)
         self.bottom_btn1_id = self.canvas.create_window(0, 0, window=self.bottom_btn1)
         self.bottom_btn2_id = self.canvas.create_window(0, 0, window=self.bottom_btn2)
@@ -65,6 +65,32 @@ class homepage(tk.Frame):
         self.after(100, self.resize_background)
         self.bind("<Configure>", self.resize_background)
         self.canvas.bind("<Button-1>", self.on_click_outside_sidebar)
+
+        # Load chatbot icon image
+        try:
+            chatbot_img = Image.open("images/chatbot_icon.png")
+            chatbot_img = chatbot_img.resize((100, 100), Image.Resampling.LANCZOS)
+            self.chatbot_icon = ImageTk.PhotoImage(chatbot_img)
+        except FileNotFoundError:
+            print("ERROR: 'chatbot_icon.png' not found.")
+            self.chatbot_icon = None
+
+# Add icon button (chatbot) in top-right corner
+        if self.chatbot_icon:
+            self.chatbot_button = tk.Button(
+                self, image=self.chatbot_icon,
+                command=lambda: controller.show_frame("ChatbotFrame"),
+                bg="white", bd=0, highlightthickness=0, activebackground="white"
+            )
+        else:
+            self.chatbot_button = tk.Button(
+                self, text="Chatbot",
+                command=lambda: controller.show_frame("ChatbotFrame"),
+                bg="white"
+            )
+
+# Place the button in the top-right corner
+        self.chatbot_button.place(relx=1.0, y=10, anchor="ne")  # Top-right corner, 10px down from top
 
 
     def toggle_sidebar(self):

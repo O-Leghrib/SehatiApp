@@ -35,5 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['SehatiApp_icon.ico'],
+    icon=['images\\SehatiApp_icon2.ico'],
 )

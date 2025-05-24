@@ -16,6 +16,7 @@ from graphHistory import HistoryPage
 from remindershistory import ReminderHistoryApp
 from enterReminders import ReminderFrame
 from enterMeasure import SehatiApp
+from ChatBot import ChatbotFrame
 
 from db_operations import initialize_database_unified 
 
@@ -35,7 +36,7 @@ def show_splash():
     splash.geometry(f"{width}x{height}+{x}+{y}")  
 
     
-    icon_path = "images/SehatiApp_icon.ico"  
+    icon_path = "images/SehatiApp_icon2.png"  
     try:
         # Check if the icon file exists before opening
         if os.path.exists(icon_path):
@@ -99,7 +100,7 @@ class App(tk.Tk):
         self.frames["ReminderHistoryApp"] = ReminderHistoryApp(container, self)
         self.frames["ReminderFrame"] = ReminderFrame(container, self)
         self.frames["SehatiApp"] = SehatiApp(container, self)
-
+        self.frames["ChatbotFrame"] = ChatbotFrame(container, self)   
         
         for name, frame_instance in self.frames.items():
             frame_instance.grid(row=0, column=0, sticky="nsew")

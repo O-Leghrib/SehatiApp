@@ -67,14 +67,6 @@ class LogSign(Frame):
                                           hover_color="#48bfe3",
                                           command=self.validate_login)
         self.button_login.pack(pady=(25, 5), ipady=4)
-
-        self.signup_label = ctk.CTkLabel(self.frame,
-                                         text="Don't have an account?",
-                                         text_color='#48bfe3',
-                                         font=("Times New Roman", 19, "bold"),
-                                         fg_color="transparent")
-        self.signup_label.pack(pady=(25, 2)) # Adjusted pady to separate from login button
-
         self.button_signup = ctk.CTkButton(self.frame,
                                            width=240,
                                            height=40,
@@ -84,7 +76,16 @@ class LogSign(Frame):
                                            fg_color="#48bfe3",
                                            hover_color="#48bfe3",
                                            command=lambda:self.controller.show_frame("SignUpPage"))
-        self.button_signup.pack(pady=(5, 5), ipady=4) # Adjusted pady for spacing
+        self.button_signup.pack(pady=(5, 5), ipady=4) 
+
+        self.signup_label = ctk.CTkLabel(self.frame,
+                                         text="Don't have an account?",
+                                         text_color='#48bfe3',
+                                         font=("Times New Roman", 19, "bold"),
+                                         fg_color="transparent")
+        self.signup_label.pack(pady=(25, 2)) # Adjusted pady to separate from login button
+
+       # Adjusted pady for spacing
 
     # --- REMOVED: setup_database method ---
     # This is handled globally by initialize_database_unified() in app.py
