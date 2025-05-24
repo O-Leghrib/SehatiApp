@@ -6,7 +6,7 @@ import requests
 import speech_recognition as sr
 
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
-API_KEY = "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"
+API_KEY = "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"
 
 SYSTEM_PROMPT = (
     "You are a health assistant focused on diabetes and high blood pressure. "
@@ -55,7 +55,7 @@ class ChatbotFrame(tk.Frame):
         self.right_frame.pack(side="right", fill="both", expand=True)
 
         left_width = 300  # Set this to match the width of self.left_frame
-        img = Image.open("images/chatbot_icon.png")
+        img = Image.open("images/bgChatBot.png")
         img = img.resize((570, 550), Image.Resampling.LANCZOS)
         self.bot_photo = ImageTk.PhotoImage(img)
         self.image_label = tk.Label(self.left_frame, image=self.bot_photo, bg="#f0f0f0")
