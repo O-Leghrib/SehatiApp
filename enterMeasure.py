@@ -179,10 +179,15 @@ class HeartFrame(Frame):
                 status = "Normal"
                 color = "green"
                 advice_text = "✅ Your blood pressure is normal."
+            elif 130 <= s < 140 or 85 <= d < 90:
+                status = "Warning"
+                color = "orange"
+                advice_text = "⚠️ Warning: your pressure is approaching a critical level."
             elif 120 <= s <= 139 or 80 <= d <= 89:
                 status = "Elevated"
                 color = "yellow"
                 advice_text = "⚠️ Elevated blood pressure. Consider lifestyle changes."
+            
             elif s >= 140 or d >= 90:
                 status = "High"
                 color = "red"
@@ -332,33 +337,69 @@ class DiabetesFrame(Frame):
             status = "Unknown"
             color = "gray"
             advice_text = ""
-
             if time == "Before Meal":
-                if sugar < 4:
-                    status = "Low"
-                    color = "blue"
-                    advice_text = "⚠️ Blood sugar too low. Consider eating something sweet."
-                elif 4 <= sugar <= 7:
-                    status = "Normal"
-                    color = "green"
-                    advice_text = "✅ Blood sugar is normal."
-                else:
-                    status = "High"
-                    color = "red"
-                    advice_text = "🚨 High blood sugar. Consider insulin or doctor consultation."
+               if sugar < 4:
+                status = "Low"
+                color = "blue"
+                advice_text = "⚠️ Blood sugar too low. Consider eating something sweet."
+               elif 4 <= sugar <= 5.5:
+                status = "Normal"
+                color = "green"
+                advice_text = "✅ Blood sugar is normal."
+               elif 5.6 <= sugar <= 6.9:
+                status = "Elevated"
+                color = "yellow"
+                advice_text = "⚠️ Elevated sugar level. Monitor regularly."
+               elif 7 <= sugar <= 8:
+                status = "Warning"
+                color = "orange"
+                advice_text = "⚠️ Warning! Blood sugar approaching high."
+               else:
+                status = "High"
+                color = "red"
+                advice_text = "🚨 High blood sugar. Consider insulin or doctor consultation."
             elif time == "2h After Meal":
                 if sugar < 4:
-                    status = "Low"
-                    color = "blue"
-                    advice_text = "⚠️ Blood sugar too low."
-                elif sugar <= 10:
-                    status = "Normal"
-                    color = "green"
-                    advice_text = "✅ Good post-meal sugar level."
+                 status = "Low"
+                 color = "blue"
+                 advice_text = "⚠️ Blood sugar too low after eating. Consider a balanced snack."
+                elif 4 <= sugar <= 7.8:
+                 status = "Normal"
+                 color = "green"
+                 advice_text = "✅ Post-meal blood sugar is within normal range."
+                elif 7.9 <= sugar <= 9:
+                 status = "Elevated"
+                 color = "yellow"
+                 advice_text = "⚠️ Slightly elevated sugar. Monitor your diet and activity."
+                elif 9.1 <= sugar <= 11:
+                 status = "Warning"
+                 color = "orange"
+                 advice_text = "⚠️ Warning! Sugar approaching diabetic level. Reduce carbs, consult a doctor."
                 else:
-                    status = "High"
-                    color = "red"
-                    advice_text = "🚨 High post-meal sugar. Monitor closely."
+                 status = "High"
+                 color = "red"
+                 advice_text = "🚨 High blood sugar after meal. Consider medication and contact your doctor."
+            elif time == "Random":
+                if sugar < 4:
+                 status = "Low"
+                 color = "blue"
+                 advice_text = "⚠️ Blood sugar too low. Eat something with carbs and monitor."
+                elif 4 <= sugar <= 7.7:
+                 status = "Normal"
+                 color = "green"
+                 advice_text = "✅ Blood sugar is in the normal range."
+                elif 7.8 <= sugar <= 9:
+                 status = "Elevated"
+                 color = "yellow"
+                 advice_text = "⚠️ Slightly high. Keep an eye on your sugar levels."
+                elif 9.1 <= sugar <= 11:
+                 status = "Warning"
+                 color = "orange"
+                 advice_text = "⚠️ Warning! Blood sugar nearing diabetic level. Reduce sugars, consult doctor."
+                else:
+                 status = "High"
+                 color = "red"
+                 advice_text = "🚨 Blood sugar too high. You may need medication — contact a professional."
             else:
                 if sugar < 4:
                     status = "Low"
