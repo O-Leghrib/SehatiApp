@@ -6,7 +6,6 @@ import os # Added for path handling and file checks
 import bcrypt # Added for login authentication in LogSignPage
 
 # Import your page classes
-# Make sure these filenames match your actual file names (e.g., HomePage.py)
 from HomePage import homepage 
 from LOGIN import LogSign
 from SIGNUP import SignUpPage
@@ -48,20 +47,18 @@ def show_splash():
             label_img.pack(pady=20)
         else:
             print(f"Warning: Icon file not found at {icon_path}. Skipping icon display.")
-            # Fallback for missing icon: just show the text
             tk.Label(splash, text="Loading...", font=("Arial", 30), bg="#d0eaff", fg="#003366").pack(pady=20)
             
     except Exception as e:
         print(f"Error loading image: {e}") 
 
-    # ظل للنص (This part might be for visual effect, keep as is if intended)
-    # النص الرئيسي فوقه
+   
     main_label = tk.Label(
         splash,
         text="SEHATI",
         font=("Arial", 70, "bold"),
         bg="#d0eaff",
-        fg="#003366"  # لون النص الحقيقي
+        fg="#003366"  
     )
     main_label.place(relx=0.5, rely=0.75, anchor="center")
     
